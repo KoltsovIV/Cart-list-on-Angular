@@ -12,16 +12,7 @@ export interface Item {
 })
 export class AppComponent {
 
-  items: Item[] = [
-    {
-      name: 'bread',
-      id: 1
-    },
-    {
-      name: 'milk',
-      id: 2
-    }
-  ]
+  items: Item[] = []
 
   updateItems(item: Item) {
     this.items.unshift(item)

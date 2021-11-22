@@ -12,7 +12,7 @@ export class ItemFormComponent implements OnInit {
   @ViewChild('nameInput', {static: false}) inputRef!: ElementRef
   itemName = '';
 
-  addPost() {
+  addItem() {
     if(this.itemName.trim()) {
       const item: Item = {
         name: this.itemName,

@@ -6,10 +6,12 @@ import {Item} from "../app.component";
   templateUrl: './item-form.component.html',
   styleUrls: ['./item-form.component.sass']
 })
+
 export class ItemFormComponent implements OnInit {
 
   @Output() onAdd: EventEmitter<Item> = new EventEmitter<Item>()
   @ViewChild('nameInput', {static: false}) inputRef!: ElementRef
+
   itemName = '';
 
   addItem() {
@@ -20,6 +22,7 @@ export class ItemFormComponent implements OnInit {
       }
       this.onAdd.emit(item)
       this.itemName = ''
+      this.inputRef.nativeElement.focus()
     }
     this.inputRef.nativeElement.focus()
   }

@@ -3,11 +3,11 @@
   class="form-control"
   placeholder="type here what you need to buy"
   [(ngModel)]="itemName"
-  (keyup.enter)="addPost()"
-  #inputItem
+  (keyup.enter)="addItem()"
+  #nameInput
 >
 
 <button
   class="btn"
-  (click)="addPost()"
+  (click)="addItem()"
 >Add item</button>

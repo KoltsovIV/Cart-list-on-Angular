@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 export interface Item {
   name:string
+  id: number
 }
 
 @Component({
@@ -10,15 +11,14 @@ export interface Item {
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'Cart-list';
 
-  items: Item[] = [
-    {name: 'eggs'},
-    {name: 'bread'}
-  ]
+  items: Item[] = []
 
   updateItems(item: Item) {
     this.items.unshift(item)
   }
 
+  deleteItems(item: Item) {
+    this.items.splice(this.items.indexOf(item), 1)
+  }
 }

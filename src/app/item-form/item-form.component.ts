@@ -10,18 +10,21 @@ import {Item} from "../app.component";
 export class ItemFormComponent implements OnInit {
 
   @Output() onAdd: EventEmitter<Item> = new EventEmitter<Item>()
-  @ViewChild('inputItem', {static: false}) inputRef!: ElementRef;
+  @ViewChild('nameInput', {static: false}) inputRef!: ElementRef
+
   itemName = '';
 
-  addPost() {
+  addItem() {
     if(this.itemName.trim()) {
       const item: Item = {
-        name: this.itemName
+        name: this.itemName,
+        id: +(new Date())
       }
       this.onAdd.emit(item)
       this.itemName = ''
       this.inputRef.nativeElement.focus()
     }
+    this.inputRef.nativeElement.focus()
   }
 
 

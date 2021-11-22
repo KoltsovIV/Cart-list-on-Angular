@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {Item} from "../app.component";
 
 @Component({
@@ -6,10 +6,11 @@ import {Item} from "../app.component";
   templateUrl: './item-form.component.html',
   styleUrls: ['./item-form.component.sass']
 })
+
 export class ItemFormComponent implements OnInit {
 
   @Output() onAdd: EventEmitter<Item> = new EventEmitter<Item>()
-
+  @ViewChild('inputItem', {static: false}) inputRef!: ElementRef;
   itemName = '';
 
   addPost() {
@@ -19,6 +20,7 @@ export class ItemFormComponent implements OnInit {
       }
       this.onAdd.emit(item)
       this.itemName = ''
+      this.inputRef.nativeElement.focus()
     }
   }
 

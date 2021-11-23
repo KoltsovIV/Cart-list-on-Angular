@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 export interface Item {
   name:string
@@ -15,7 +15,11 @@ export interface InfoMessage{
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  ngOnInit() {
+    this.items = this.items = JSON.parse(localStorage.getItem('items_collection') || '{}')
+  }
 
   items: Item[] = []
 
@@ -29,15 +33,24 @@ export class AppComponent {
         color: 'orange'
       },
       {
-        name: 'List item was deleted',
+        name: 'List item successfully deleted',
+        color: 'red'
+      },
+      {
+        name: 'Item list successfully cleared',
         color: 'red'
       }
     ]
 
   messageIndex = -1
 
+  putItemsToLocalStorage() {
+    localStorage.setItem('items_collection', JSON.stringify(this.items))
+  }
+
   updateItems(item: Item) {
     this.items.unshift(item)
+    this.putItemsToLocalStorage()
     this.messageIndex = 0
     setTimeout( () => {this.messageIndex = -1}
     , 2000)
@@ -45,6 +58,7 @@ export class AppComponent {
 
   deleteItems(item: Item) {
     this.items.splice(this.items.indexOf(item), 1)
+    this.putItemsToLocalStorage()
     this.messageIndex = 2
     setTimeout( () => {this.messageIndex = -1}
       , 2000)
@@ -59,8 +73,19 @@ export class AppComponent {
       }
     }
     this.items.splice(index, 1, item)
+    this.putItemsToLocalStorage()
     this.messageIndex = 1
     setTimeout( () => {this.messageIndex = -1}
       , 2000)
+  }
+
+  clearList() {
+    if(confirm("Are you sure to clear cart list?")) {
+      this.items.splice(0)
+      this.putItemsToLocalStorage()
+      this.messageIndex = 3
+      setTimeout( () => {this.messageIndex = -1}
+        , 2000)
+    }
   }
 }

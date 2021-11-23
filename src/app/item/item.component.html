@@ -40,7 +40,9 @@
     <div class="col-md-1">
 
       <button
-        class="btn"
+        type="button"
+        class="btn btn-warning"
+        title="edit item"
         [ngClass]="{
           visible: visibilityToggle,
           unvisible: !visibilityToggle
@@ -54,7 +56,9 @@
       </button>
 
       <button
-        class="btn"
+        type="button"
+        class="btn btn-warning"
+        title="confirm"
         [ngClass]="{
           visible: !visibilityToggle,
           unvisible: visibilityToggle
@@ -75,7 +79,9 @@
 
     <div class="col-md-1">
       <button
-        class="btn"
+        type="button"
+        class="btn btn-danger"
+        title="delete item"
         (click)="delItem()"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

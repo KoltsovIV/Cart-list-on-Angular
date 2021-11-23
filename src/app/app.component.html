@@ -4,7 +4,15 @@
 ></app-information-message>
 
 <div class="container">
-  <h1>Cart list</h1>
+  <div class="header">
+    <h1>Cart list</h1>
+    <button
+      type="button"
+      class="btn btn-danger btn-primary"
+      (click)="clearList()"
+    >Clear list</button>
+  </div>
+
 
   <app-item-form
     (onAdd)="updateItems($event)"

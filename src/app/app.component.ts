@@ -5,6 +5,11 @@ export interface Item {
   id: number
 }
 
+export interface InfoMessage{
+  name: string
+  color: string
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,23 +17,37 @@ export interface Item {
 })
 export class AppComponent {
 
-  items: Item[] = [
-    {
-      name: 'qw',
-      id: 1
-    },
-    {
-      name: 'qwer',
-      id: 2
-    }
-  ]
+  items: Item[] = []
+
+    messages: InfoMessage[] = [
+      {
+        name:'List item successfully added',
+        color: 'green'
+      },
+      {
+        name: 'List item successfully changed',
+        color: 'orange'
+      },
+      {
+        name: 'List item was deleted',
+        color: 'red'
+      }
+    ]
+
+  messageIndex = -1
 
   updateItems(item: Item) {
     this.items.unshift(item)
+    this.messageIndex = 0
+    setTimeout( () => {this.messageIndex = -1}
+    , 2000)
   }
 
   deleteItems(item: Item) {
     this.items.splice(this.items.indexOf(item), 1)
+    this.messageIndex = 2
+    setTimeout( () => {this.messageIndex = -1}
+      , 2000)
   }
 
   editItems(item: Item) {
@@ -40,5 +59,8 @@ export class AppComponent {
       }
     }
     this.items.splice(index, 1, item)
+    this.messageIndex = 1
+    setTimeout( () => {this.messageIndex = -1}
+      , 2000)
   }
 }

@@ -6,12 +6,14 @@ import { ItemFormComponent } from './item-form/item-form.component';
 import { ItemComponent } from './item/item.component';
 import {FormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InformationMessageComponent } from './information-message/information-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemFormComponent,
-    ItemComponent
+    ItemComponent,
+    InformationMessageComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,16 @@ export interface Item {
 })
 export class AppComponent {
 
-  items: Item[] = []
+  items: Item[] = [
+    {
+      name: 'qw',
+      id: 1
+    },
+    {
+      name: 'qwer',
+      id: 2
+    }
+  ]
 
   updateItems(item: Item) {
     this.items.unshift(item)
@@ -20,5 +29,16 @@ export class AppComponent {
 
   deleteItems(item: Item) {
     this.items.splice(this.items.indexOf(item), 1)
+  }
+
+  editItems(item: Item) {
+    let index = -1
+    for(let i = 0; i < this.items.length; i++) {
+      if(this.items[i].id === item.id) {
+        index = i;
+        break;
+      }
+    }
+    this.items.splice(index, 1, item)
   }
 }

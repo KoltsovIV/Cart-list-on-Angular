@@ -9,9 +9,24 @@ import {Item} from "../app.component";
 export class ItemComponent implements OnInit {
 
   @Output() onDel: EventEmitter<Item> = new EventEmitter<Item>()
+  @Output() onEdit: EventEmitter<Item> = new EventEmitter<Item>()
   @Input() item!: Item
 
   crossedToggle = false
+  visibilityToggle = true
+  editItemName = ''
+
+
+
+  editItem() {
+    if(this.editItemName.trim()) {
+      const item: Item = {
+        name: this.editItemName,
+        id: this.item.id
+      }
+      this.onEdit.emit(item)
+    }
+  }
 
   delItem() {
     this.onDel.emit(this.item)

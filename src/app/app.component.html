@@ -11,6 +11,7 @@
     *ngFor="let item of items"
     [item]="item"
     (onDel)="deleteItems($event)"
+    (onEdit)="editItems($event)"
   ></app-item>
 </div>
 

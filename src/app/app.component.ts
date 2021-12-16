@@ -18,7 +18,7 @@ export interface InfoMessage{
 export class AppComponent implements OnInit {
 
   ngOnInit() {
-    this.items = this.items = JSON.parse(localStorage.getItem('items_collection') || '{}')
+    this.items = this.items = JSON.parse(localStorage.getItem('items_collection') || '[]')
   }
 
   items: Item[] = []
